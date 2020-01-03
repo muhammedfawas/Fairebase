@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="col-md-4 offset-4 card mt-4">
+        <div class="card-body">
+            <form #form="ngForm" (ngSubmit)="submit(form)" ><h1 class="text-danger text-uppercase text-center">login</h1>
+                <div class="form-group">
+                     <input type="text" class="form-control mt-2" placeholder="Enter your name" name="username"
+                     ngModel
+                     #username="ngModel"
+                     required
+                     minlength="3">
+                    </div>
+                    <div class="text-danger m2" *ngIf="username.invalid && username.touched">
+                     <p *ngIf="username.errors.required">username is required</p>
+                    </div>
+               
+                <div class="form-group">
+                    <input type="email" class="form-control mt-2"placeholder="enter your email"name ="email"
+                    ngModel
+                    #email="ngModel"
+                    required
+                    minlength="6">
+                    <div class="text-danger m2"*ngIf="email.invalid && email.touched">
+                        <p *ngIf="email.errors.required">email is required</p>
+                        <p *ngIf="email.errors.minlength">minimum 7 charecter should be add</p>
+                    </div>
+                 
+                </div>
+               
+                <div class="form-group">
+                    <input type="password" class="form-control mt-2"placeholder="Enter your passsword"name="password"
+                    ngModel
+                    #password="ngModel"
+                    required>
+                   <div class="text-danger m-2" *ngIf="password.invalid && password.touched">
+                       <p *ngIf="password.errors.required">Password is required</p>
+                   </div>
+                    
+                </div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option *ngFor="let c of countryList;index as i"[ngValue]="i">
+                            {{c}}
+                        </option>
+                    </select>
+                </div>
+        <div class="form-grup"><button class="btn btn-success btn-block" [disabled]="form.invalid">submit</button></div>
+               
+    </form>
+            
+        </div>
+    </div>
+</div>
